@@ -1,0 +1,9 @@
+CREATE TABLE cam
+(
+  id serial NOT NULL,
+  name character varying(1024),
+  url character varying(1024),
+  CONSTRAINT cam_pk PRIMARY KEY (id)
+)
+WITH (OIDS=FALSE);
+ALTER TABLE cam OWNER TO "ss15-gruppe14";
