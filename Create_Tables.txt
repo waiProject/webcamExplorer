@@ -1,0 +1,57 @@
+CREATE TABLE public."user"
+(
+   "Name" character varying NOT NULL, 
+   "Passwort" character varying NOT NULL, 
+   "Rolle" character(3)
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+ALTER TABLE public."user"
+  OWNER TO wc_admin;
+COMMENT ON COLUMN public."user"."Name" IS 'Benutzername';
+COMMENT ON COLUMN public."user"."Passwort" IS 'Passwort in MD5';
+COMMENT ON COLUMN public."user"."Rolle" IS 'Rechte Rolle für Kamera Ansicht:
+Admin: adm
+User: usr';
+
+
+
+CREATE TABLE public."cameras"
+(
+   "Name" character varying NOT NULL, 
+   "Ort" character varying, 
+   "URL" character varying NOT NULL, 
+   "Rolle" character(3) NOT NULL
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+ALTER TABLE public."cameras"
+  OWNER TO wc_admin;
+COMMENT ON COLUMN public."cameras"."Name" IS 'Name der Kamera';
+COMMENT ON COLUMN public."cameras"."Ort" IS 'Ort der Kamera, nur ein Wort. Kann auch null sein.';
+COMMENT ON COLUMN public."cameras"."URL" IS 'Konkrete URL zum .jpg einer Kamera';
+COMMENT ON COLUMN public."cameras"."Rolle" IS 'Rolle für Kamera Ansicht:
+Zuordung entweder ''adm'' oder ''usr''';
+
+
+
+CREATE TABLE public."images"
+(
+   "CamName" character NOT NULL, 
+   "Ort" character varying, 
+   "Datetime" timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+ALTER TABLE public."images"
+  OWNER TO wc_admin;
+COMMENT ON COLUMN public."images"."CamName" IS 'Vorzugsweise Name aus cameras.name';
+COMMENT ON COLUMN public."images"."Ort" IS 'Vorzugsweise aus cameras.ort
+Kann null sein';
+COMMENT ON COLUMN public."images"."Datetime" IS 'Zeitstempel mit Zeitzone. Als Default gesetzt wird automatisch eingefügt';
