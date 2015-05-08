@@ -55,3 +55,7 @@ COMMENT ON COLUMN public."images"."CamName" IS 'Vorzugsweise Name aus cameras.na
 COMMENT ON COLUMN public."images"."Ort" IS 'Vorzugsweise aus cameras.ort
 Kann null sein';
 COMMENT ON COLUMN public."images"."Datetime" IS 'Zeitstempel mit Zeitzone. Als Default gesetzt wird automatisch eingefügt';
+
+
+ALTER TABLE cameras
+   ADD COLUMN id serial NOT NULL UNIQUE;
