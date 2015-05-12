@@ -5,6 +5,8 @@ public class Cam {
     private Long id;
     private String name;
     private String url;
+    private String ort;
+    private String rolle;
     
     public Long getId() {
         return id;
@@ -29,4 +31,21 @@ public class Cam {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
+	public String getOrt() {
+		return ort;
+	}
+
+	public void setOrt(String ort) {
+		this.ort = ort;
+	}
+
+	public String getRolle() {
+		return rolle;
+	}
+
+	public void setRolle(String rolle) {
+		this.rolle = rolle;
+	}
+
 }

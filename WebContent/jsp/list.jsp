@@ -20,8 +20,8 @@
 			<c:forEach var="cam" items="${cams}">
 				<tr>
 					<td><c:out value="${cam.id}"/></td>					
-					<td><c:out value="${cam.name}"/></td>
-					<td><c:out value="${cam.url}"/></td>
+					<td><c:out value="${cam.Name}"/></td>
+					<td><c:out value="${cam.Url}"/></td>
 					<td><a href="edit?action=edit&id=${cam.id}">Ändern</a></td>
 					<td><a href="edit?action=delete&id=${cam.id}">Löschen</a></td>
 					<td><a href="edit?action=show&id=${cam.id}">Anzeigen</a></td>

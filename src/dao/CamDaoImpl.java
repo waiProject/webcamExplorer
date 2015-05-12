@@ -27,7 +27,7 @@ public class CamDaoImpl implements CamDao {
 		Connection connection = null;		
 		try {
 			connection = jndi.getConnection("jdbc/libraryDB");		
-			PreparedStatement pstmt = connection.prepareStatement("delete from cam where id = ?");
+			PreparedStatement pstmt = connection.prepareStatement("delete from cameras where id = ?");
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();			
 		} catch (Exception e) {
@@ -46,7 +46,7 @@ public class CamDaoImpl implements CamDao {
 		Connection connection = null;		
 		try {
 			connection = jndi.getConnection("jdbc/libraryDB");			
-			PreparedStatement pstmt = connection.prepareStatement("select id, name, url from cam where id = ?");
+			PreparedStatement pstmt = connection.prepareStatement("select id, Name, Ort, Url from cameras where id = ?");
 			pstmt.setLong(1, id);
 			ResultSet rs = pstmt.executeQuery();							
 			if (rs.next()) {
@@ -75,9 +75,12 @@ public class CamDaoImpl implements CamDao {
 		try {
 			connection = jndi.getConnection("jdbc/libraryDB");			
 			if (cam.getId() == null) {
-				PreparedStatement pstmt = connection.prepareStatement("insert into cam (name, url) values (?,?)");
-				pstmt.setString(1, cam.getName());
-				pstmt.setString(2, cam.getUrl());
+				PreparedStatement pstmt = connection.prepareStatement("insert into cam (id, name, ort, url, rolle) values (?,?,?,?,?)");
+				pstmt.setLong(1, cam.getId());
+				pstmt.setString(2, cam.getName());
+				pstmt.setString(3, cam.getOrt());
+				pstmt.setString(4, cam.getUrl());
+				pstmt.setString(5, cam.getRolle());
 				pstmt.executeUpdate();
 			} else {
 				PreparedStatement pstmt = connection.prepareStatement("update cam set name = ?, url = ? where id = ?");
@@ -102,14 +105,15 @@ public class CamDaoImpl implements CamDao {
 		try {
 			connection = jndi.getConnection("jdbc/libraryDB");			
 			
-				PreparedStatement pstmt = connection.prepareStatement("select id, name, url from cam");				
+				PreparedStatement pstmt = connection.prepareStatement("select id, name, ort, url from cam");				
 				ResultSet rs = pstmt.executeQuery();
 								
 				while (rs.next()) {
 					Cam cam = new Cam();
 					cam.setId(rs.getLong("id"));
-					cam.setName(rs.getString("name"));
-					cam.setUrl(rs.getString("url"));
+					cam.setName(rs.getString("Name"));
+					cam.setName(rs.getString("Ort"));
+					cam.setUrl(rs.getString("Url"));
 					camList.add(cam);
 				}			
 			
