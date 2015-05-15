@@ -12,15 +12,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import security.JavaMD5Hash;
 import dao.CamDao;
 import dao.DaoFactory;
 import exception.CamNotDeletedException;
 import exception.CamNotFoundException;
 import exception.CamNotSavedException;
-import model.Cam;
+import model.User;
 
-@WebServlet("/editCam")
-public class CamEdit extends HttpServlet {	
+@WebServlet("/editUser")
+public class UserEdit extends HttpServlet {	
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -42,33 +43,24 @@ public class CamEdit extends HttpServlet {
 		}
 				
 		if(action.equals("add")){
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/addCam.jsp");
-			dispatcher.forward(request, response);		
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/addUser.jsp");
+			dispatcher.forward(request, response);
 		}
 		else if(action.equals("edit")) {			
 			try {
-				Cam cam = camDao.getCam(id);
-				request.setAttribute("cam", cam);
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/editCam.jsp");
+				User user = camDao.getUser(id);
+				request.setAttribute("user", user);
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/editUser.jsp");
 				dispatcher.forward(request, response);
 			} catch (CamNotFoundException e) {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
 				dispatcher.forward(request, response);
 			}				
-		}
+		} 
 		else if(action.equals("delete")) {			
 			try {
-				camDao.deleteCam(id);
-				response.sendRedirect(request.getContextPath() + "/camList");
-			} catch (CamNotDeletedException e) {
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
-				dispatcher.forward(request, response);
-			}
-		}
-		else if(action.equals("show")) {			
-			try {
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/showImage.jsp");
-				dispatcher.forward(request, response);
+				camDao.deleteUser(id);
+				response.sendRedirect(request.getContextPath() + "/userList");
 			} catch (CamNotDeletedException e) {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
 				dispatcher.forward(request, response);
@@ -80,36 +72,38 @@ public class CamEdit extends HttpServlet {
 				
 		Long id = null;
 		
-		Cam cam = createCam(request);
+		User user = createUser(request);
 		
 		if(request.getParameter("id") != null) {
 			id = Long.valueOf(request.getParameter("id"));
-			cam.setId(id);
+			user.setId(id);
 		}
 		
 		try {		
-			camDao.saveCam(cam);
-			response.sendRedirect(request.getContextPath() + "/camList");
+			camDao.saveUser(user);
+			response.sendRedirect(request.getContextPath() + "/userList");
 		}  catch (CamNotSavedException e) {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
 			dispatcher.forward(request, response);
 		}
-		
 	}
 	
-	private Cam createCam(HttpServletRequest request){ 
+	/**
+	 * Creates a User Model Object with given parameters
+	 * @param request
+	 * @return User
+	 */
+	private User createUser(HttpServletRequest request) {
 		String name = request.getParameter("name");
-		String ort = request.getParameter("ort");
-		String url = request.getParameter("url");
+		String pass = JavaMD5Hash.md5(request.getParameter("password"));
 		String rolle = request.getParameter("rolle");
 		
 				
-		Cam cam = new Cam();
-		cam.setName(name);
-		cam.setOrt(ort);
-		cam.setUrl(url);
-		cam.setRolle(rolle);
+		User user = new User();
+		user.setName(name);
+		user.setPasswort(pass);
+		user.setRolle(rolle);
 		
-		return cam;
+		return user;
 	}
 }

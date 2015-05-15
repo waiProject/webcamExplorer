@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Cam;
+import model.User;
 import dao.CamDao;
 import dao.DaoFactory;
 
-@WebServlet("/camList")
-public class CamList extends HttpServlet {	
+@WebServlet("/userList")
+public class UserList extends HttpServlet {	
 	
 	private static final long serialVersionUID = 1L;
 	
 	final CamDao camDao = DaoFactory.getInstance().getCamDao();
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		List<Cam> collection = camDao.list();
-		request.setAttribute("cams", collection);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/camList.jsp");
+		List<User> collection = camDao.userList();
+		request.setAttribute("users", collection);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/userList.jsp");
 		dispatcher.forward(request, response);		
 	}
 }

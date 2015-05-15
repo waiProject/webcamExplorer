@@ -1,24 +1,19 @@
-<%@ page import="model.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>     
-    <title>webcamExplorer - Add Cam</title>
+    <title>webcamExplorer - Add User</title>
   </head>
   <body>
-	<form name="edit" action="editCam" method="post">
+	<form name="edit" action="editUser" method="post">
 		<table border="1">
 			<tbody>
 				<tr>
-					<td>Cam Name:</td>
+					<td>Benutzer Name:</td>
 					<td><input type="text" name="name" value=""></td>		
 					</tr><tr>
-					<td>Ort:</td>
-					<td><input type="text" name="ort" value=""></td>		
-					</tr><tr>		
-					<td>Url:</td>	
-					<td><input type="text" name="url" value=""></td>
+					<td>Passwort:</td>
+					<td><input type="password" name="password" value=""></td>		
 					</tr><tr>
 					<td>Rolle (usr, adm):</td>
 					<td><input type="text" name="rolle" value=""></td>		

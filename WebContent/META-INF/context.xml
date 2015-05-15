@@ -3,10 +3,9 @@
 			  auth="Container"
 			  type="javax.sql.DataSource"
 			  driverClassName="org.postgresql.Driver"
-		      url="jdbc:postgresql://localhost:5424/waiProject"
+		      url="jdbc:postgresql://localhost/waiProject"
     		  username="wc_admin"
     		  password="!wc_admin!"
     		  maxActive="250" maxIdle="5"
 	/>
 </Context>
-

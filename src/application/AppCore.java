@@ -30,7 +30,7 @@ public class AppCore implements Job {
 		ResultSet resultSet = null;
 
 		try {
-			connection = jndiFactory.getConnection("jdbc/waiDB");
+			connection = jndiFactory.getConnection("jdbc/libraryDB");
 
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery("select id, value from test");

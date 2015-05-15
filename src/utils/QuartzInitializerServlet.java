@@ -45,7 +45,7 @@ public class QuartzInitializerServlet extends HttpServlet {
 
         StdSchedulerFactory factory;
         try {
-            if (JNDIFactory.getInstance().getEnvironmentAsBoolean("wai_hilf").booleanValue() == true)
+            if (JNDIFactory.getInstance().getEnvironmentAsBoolean("waiProject").booleanValue() == true)
             {
                 mLog.info ("Quartz Initializer Servlet loaded, initializing Scheduler...");
 

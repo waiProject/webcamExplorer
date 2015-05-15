@@ -4,15 +4,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>      
-    <title>EarthCam</title>     
+    <title>webcamExplorer - Available Cams</title>     
   </head>
   <body>
   	<table border="1">
   		<tbody>
 	  		<tr>
 	  			<td>Id</td>	
-	  			<td>Kamera Name</td>				
+	  			<td>Kamera Name</td>
+	  			<td>Ort</td>				
 				<td>URL</td>
+				<td>Rolle</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -20,16 +22,20 @@
 			<c:forEach var="cam" items="${cams}">
 				<tr>
 					<td><c:out value="${cam.id}"/></td>					
-					<td><c:out value="${cam.Name}"/></td>
-					<td><c:out value="${cam.Url}"/></td>
-					<td><a href="edit?action=edit&id=${cam.id}">Ändern</a></td>
-					<td><a href="edit?action=delete&id=${cam.id}">Löschen</a></td>
-					<td><a href="edit?action=show&id=${cam.id}">Anzeigen</a></td>
+					<td><c:out value="${cam.name}"/></td>
+					<td><c:out value="${cam.ort}"/></td>
+					<td><c:out value="${cam.url}"/></td>
+					<td><c:out value="${cam.rolle}"/></td>
+					<td><a href="editCam?action=edit&id=${cam.id}">Ändern</a></td>
+					<td><a href="editCam?action=delete&id=${cam.id}">Löschen</a></td>
+					<td><a href="editCam?action=show&id=${cam.id}">Anzeigen</a></td>
 				</tr>
 			</c:forEach>	
   		</tbody>
   	</table>
   	<br>
-  	<a href="edit?action=add">Neue Kamera hinzufügen</a>
+  	<a href="editCam?action=add">Neue Kamera hinzufügen</a>
+  	<br>
+  	<a href="userList">Benutzer Liste anzeigen</a>
   </body>
 </html>

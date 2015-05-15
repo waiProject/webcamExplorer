@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>    
-    <title>EarthCam</title>
+    <title>webcamExplorer - Show Cam</title>
   </head>  
   <body>
 	<form name="edit" action="edit" method="post">		
