@@ -31,16 +31,15 @@ public class CamLogin extends HttpServlet {
 		pass = JavaMD5Hash.md5(pass);
 		
 		User benutzer = camDao.login(user, pass);		
-		
-		if(benutzer.getName() == null){			
+		System.out.println(request.getSession(false) == null);
+		if(benutzer.getName() == null){
+			request.setAttribute("error", "Benutzername oder Passwort wurden nicht gefunden");
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
 			dispatcher.forward(request, response);
 		}else{
-			HttpSession session = request.getSession(true);
-			
-			if(session.isNew()){
-				session.setMaxInactiveInterval(60);
-			}
+			HttpSession session = request.getSession();
+			response.setHeader("JSESSIONID", session.getId());
+			session.setMaxInactiveInterval(5);
 			response.sendRedirect(request.getContextPath() + "/camList");
 		}
 	}

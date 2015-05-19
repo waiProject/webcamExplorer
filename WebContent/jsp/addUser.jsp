@@ -15,8 +15,13 @@
 					<td>Passwort:</td>
 					<td><input type="password" name="password" value=""></td>		
 					</tr><tr>
-					<td>Rolle (usr, adm):</td>
-					<td><input type="text" name="rolle" value=""></td>		
+					<td>Rolle:</td>
+					<td>
+					 <select name="rolle" size="2">
+					    <option>usr</option>
+					    <option>adm</option>
+					  </select>
+					</td>
 					</tr><tr>	
 					<td colspan="2"><input type="submit" name="btnSave" value="Save"></td>
 				</tr>

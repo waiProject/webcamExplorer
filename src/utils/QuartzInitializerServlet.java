@@ -45,7 +45,7 @@ public class QuartzInitializerServlet extends HttpServlet {
 
         StdSchedulerFactory factory;
         try {
-            if (JNDIFactory.getInstance().getEnvironmentAsBoolean("waiProject").booleanValue() == true)
+            if (JNDIFactory.getInstance().getEnvironmentAsBoolean("webcamExplorer").booleanValue() == true)
             {
                 mLog.info ("Quartz Initializer Servlet loaded, initializing Scheduler...");
 

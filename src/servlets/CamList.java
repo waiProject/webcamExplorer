@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Cam;
 import dao.CamDao;
@@ -22,9 +23,16 @@ public class CamList extends HttpServlet {
 	final CamDao camDao = DaoFactory.getInstance().getCamDao();
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		List<Cam> collection = camDao.list();
-		request.setAttribute("cams", collection);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/camList.jsp");
-		dispatcher.forward(request, response);		
+		System.out.println(request.getSession(false) == null);
+		if(request.getSession(false) == null){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			List<Cam> collection = camDao.list();
+			request.setAttribute("cams", collection);
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/camList.jsp");
+			dispatcher.forward(request, response);
+		}		
 	}
 }
