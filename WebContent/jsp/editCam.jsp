@@ -7,6 +7,13 @@
     <title>webcamExplorer - Edit Cam</title>
   </head>  
   <body>
+  <table border="0">
+  		<tr>
+  			<td><a href="camList">camList</a></td>
+  			<td><a href="userList">userList</a></td>
+  			<td><a href="login?action=logout">logout</a></td>  			
+  		</tr>
+  	</table>
 	<form name="edit" action="editCam" method="post">		
 		<table border="1">
 			<tbody>

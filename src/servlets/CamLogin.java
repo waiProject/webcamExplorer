@@ -25,6 +25,7 @@ public class CamLogin extends HttpServlet {
 	final CamDao camDao = DaoFactory.getInstance().getCamDao();	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String user = request.getParameter("benutzer");
 		String pass = request.getParameter("password");
 		
@@ -41,12 +42,22 @@ public class CamLogin extends HttpServlet {
 			response.setHeader("JSESSIONID", session.getId());
 			session.setMaxInactiveInterval(5);
 			response.sendRedirect(request.getContextPath() + "/camList");
-		}
+		}		
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
-		dispatcher.forward(request, response);	
+		
+		String action = request.getParameter("action");
+		if (action == null) {
+			request.getSession(false).invalidate();
+			request.setAttribute("error", "Die Anwendung konnte nicht richtig ausgeführt werden");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			request.getSession(false).invalidate();
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}	
 	}
 
 }

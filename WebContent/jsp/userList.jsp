@@ -7,6 +7,13 @@
     <title>webcamExplorer - Available Users</title>     
   </head>
   <body>
+  <table border="0">
+  		<tr>
+  			<td><a href="camList">camList</a></td>
+  			<td><a href="userList">userList</a></td>
+  			<td><a href="login?action=logout">logout</a></td>   			
+  		</tr>
+  	</table>
   	<table border="1">
   		<tbody>
 	  		<tr>
@@ -28,8 +35,6 @@
   		</tbody>
   	</table>
   	<br>
-  	<a href="editUser?action=add">Neuen Benutzer hinzufügen</a>
-  	<br>
-  	<a href="camList">Cam Liste</a>
+  	<a href="editUser?action=add">+ Neuen Benutzer hinzufügen</a>
   </body>
 </html>
