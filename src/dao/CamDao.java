@@ -3,7 +3,9 @@ package dao;
 import java.util.List;
 
 import model.Cam;
+import model.Image;
 import model.User;
+
 
 public interface CamDao {
 	public void saveCam(Cam cam);
@@ -17,7 +19,9 @@ public interface CamDao {
 	
 	public List<Cam> list();
 	public List<User> userList();
+
 	
 	public User login(String user, String pass);
+	public List<Image> imageList();
 }
 

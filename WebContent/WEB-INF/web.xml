@@ -9,4 +9,54 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ImageServlet</display-name>
+    <servlet-name>ImageServlet</servlet-name>
+    <servlet-class>servlets.ImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageServlet</servlet-name>
+    <url-pattern>/ImageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Picture</display-name>
+    <servlet-name>Picture</servlet-name>
+    <servlet-class>model.Picture</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Picture</servlet-name>
+    <url-pattern>/Picture</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Date</display-name>
+    <servlet-name>Date</servlet-name>
+    <servlet-class>model.Date</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Date</servlet-name>
+    <url-pattern>/Date</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Images</display-name>
+    <servlet-name>Images</servlet-name>
+    <servlet-class>model.Images</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Images</servlet-name>
+    <url-pattern>/Images</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Search</display-name>
+    <servlet-name>Search</servlet-name>
+    <servlet-class>servlets.Search</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Search</servlet-name>
+    <url-pattern>/Search</url-pattern>
+  </servlet-mapping>
 </web-app>
