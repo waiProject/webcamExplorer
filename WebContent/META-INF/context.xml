@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <Environment name="webcamExplorer" value="true" type="java.lang.Boolean" override="false"/>
-    <Environment name="projectPath" value="C:/Users/Mkay/git/webcamExplorer/WebContent" type="java.lang.String" override="false"/>
+    <Environment name="projectPath" value="C:/Users/Manuel/Documents/GIT/webcamExplorer/WebContent" type="java.lang.String" override="false"/>
     <Environment name="configPath" value="/config" type="java.lang.String" override="false"/>
 	<Resource name="jdbc/libraryDB"
 			  auth="Container"
