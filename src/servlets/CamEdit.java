@@ -65,9 +65,9 @@ public class CamEdit extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-		else if(action.equals("show")) {			
+		else if(action.equals("search")) {			
 			try {
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/showImage.jsp");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/SelectCam.jsp");
 				dispatcher.forward(request, response);
 			} catch (CamNotDeletedException e) {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");

@@ -9,10 +9,12 @@ import java.util.List;
 
 import jndi.JndiFactory;
 import model.Cam;
+import model.Image;
 import model.User;
 import exception.CamNotDeletedException;
 import exception.CamNotSavedException;
 import exception.CamNotFoundException;
+import exception.ImageNotFoundException;
 import exception.UserNotDeletedException;
 import exception.UserNotFoundException;
 import exception.UserNotSavedException;
@@ -273,5 +275,36 @@ public class CamDaoImpl implements CamDao {
 		} finally {	
 			closeConnection(connection);
 		}
+	}
+
+	@Override
+	public List<Image> imageList() {
+		
+			List<Image> imageList = new ArrayList<Image>();
+			
+			Connection connection = null;		
+			try {
+				connection = jndi.getConnection("jdbc/libraryDB");			
+				
+					PreparedStatement pstmt = connection.prepareStatement("select filepath, datetime, img_id from images");				
+					ResultSet rs = pstmt.executeQuery();
+									
+					while (rs.next()) {
+					Image image =new Image();
+					image.setFilepath(rs.getString("filepath"));
+					image.setDatetime(rs.getDate("datetime"));
+					image.setImg_id(rs.getLong("img_id"));
+					imageList.add(image);
+					}
+				
+				return imageList;
+			} catch (Exception e) {
+				throw new ImageNotFoundException();
+			} finally {	
+				closeConnection(connection);
+			}
+		
+
+		
 	}
 }

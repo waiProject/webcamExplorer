@@ -35,7 +35,7 @@
 					<td><c:out value="${cam.rolle}"/></td>
 					<td><a href="editCam?action=edit&id=${cam.id}">Ändern</a></td>
 					<td><a href="editCam?action=delete&id=${cam.id}">Löschen</a></td>
-					<td><a href="editCam?action=show&id=${cam.id}">Anzeigen</a></td>
+					<td><a href="editCam?action=search&id=${cam.id}">Suchen</a></td>
 				</tr>
 			</c:forEach>	
   		</tbody>
