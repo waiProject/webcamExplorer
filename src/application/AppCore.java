@@ -70,8 +70,9 @@ public class AppCore implements Job {
 	public void execute(JobExecutionContext context)
 			throws JobExecutionException {
 		try {
-			AppCore core = new AppCore();
-			core.process();
+			//AppCore core = new AppCore();
+			//core.process();
+			this.process();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
