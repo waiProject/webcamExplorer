@@ -1,0 +1,10 @@
+.calendar_table {
+    width:20px;
+}
+.calendar_table tr {
+    margin:2;
+    padding:4px;
+}
+table {
+    border: 1px solid black;
+}

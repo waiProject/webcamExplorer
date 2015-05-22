@@ -23,7 +23,7 @@ public class CamList extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 		
-		if(!request.isRequestedSessionIdValid()){
+		if(!camDao.isSessionOK(request)){
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}else{

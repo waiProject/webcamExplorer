@@ -35,7 +35,25 @@
 				<cron-expression>0 0/1 * * * ?</cron-expression>
 			</cron>
 		</trigger>
-	</schedule>    
+	</schedule>
+	
+	 <schedule>
+		<job>
+			<name>Session-Job</name>
+			<group>GROUP-1</group>
+			<job-class>application.SessionCheck</job-class>
+		</job>
+	
+		<trigger>
+			<cron>
+				<name>Session</name>
+				<group>MYTRIGGER_GROUP</group>
+				<job-name>Session-Job</job-name>
+				<job-group>GROUP-1</job-group>
+				<cron-expression>0 0/1 * * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</schedule>   
 	
 </job-scheduling-data>
 

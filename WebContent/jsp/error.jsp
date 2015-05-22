@@ -12,6 +12,6 @@
 <br>
 <td><c:out value="Fehler: ${error}"/></td>
 <br>
-<a href="login?action=login">Zurück zur Login Seite</a>
+<a href="logout">Zurück zur Login Seite</a>
 </body>
 </html>

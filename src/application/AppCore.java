@@ -17,7 +17,7 @@ import utils.JNDIFactory;
 
 public class AppCore implements Job {
 
-	private static Logger jlog = Logger.getLogger(AppCore.class);
+//	private static Logger jlog = Logger.getLogger(AppCore.class);
 
 	JNDIFactory jndiFactory = JNDIFactory.getInstance();
 
@@ -35,12 +35,12 @@ public class AppCore implements Job {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery("select id, value from test");
 
-			jlog.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));			
+//			jlog.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));			
 			
 			
-			while (resultSet.next())
-				jlog.info(resultSet.getInt("id") + " has value: "
-						+ resultSet.getString("value"));
+//			while (resultSet.next())
+//				jlog.info(resultSet.getInt("id") + " has value: "
+//						+ resultSet.getString("value"));
 
 		} finally {
 			if (connection != null)
@@ -70,8 +70,8 @@ public class AppCore implements Job {
 	public void execute(JobExecutionContext context)
 			throws JobExecutionException {
 		try {
-			//AppCore core = new AppCore();
-			//core.process();
+			AppCore core = new AppCore();
+			core.process();
 			this.process();
 		} catch (Exception e) {
 			e.printStackTrace();

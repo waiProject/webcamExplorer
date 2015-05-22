@@ -14,7 +14,4 @@
     <servlet-class>utils.QuartzInitializerServlet</servlet-class> 
     <load-on-startup>1</load-on-startup> 
   </servlet>
-  <session-config>
-      <session-timeout>1</session-timeout>    <!-- 30 minutes -->
-    </session-config>
 </web-app>

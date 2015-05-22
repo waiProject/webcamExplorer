@@ -29,19 +29,23 @@ public class CamEdit extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String action = request.getParameter("action");
-		
-		if (action == null) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
-			dispatcher.forward(request, response);
-		}
-				
 		Long id = null;
-		
+			
 		if (request.getParameter("id") != null) {
 			id = Long.valueOf(request.getParameter("id"));
 		}
-				
-		if(action.equals("add")){
+		
+		/**
+		 * Überprüfe auf korrektheit der Session
+		 */
+		if(!camDao.isSessionOK(request)){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else if (action == null) {
+			request.setAttribute("error", "Die angeforderte Seite konnte nicht gefunden werden!");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
+			dispatcher.forward(request, response);
+		}else if(action.equals("add")){
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/addCam.jsp");
 			dispatcher.forward(request, response);		
 		}

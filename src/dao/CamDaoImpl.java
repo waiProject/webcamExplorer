@@ -7,6 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+
 import jndi.JndiFactory;
 import model.Cam;
 import model.User;
@@ -19,6 +23,7 @@ import exception.UserNotSavedException;
 
 public class CamDaoImpl implements CamDao {
 	
+	private static Logger jlog = Logger.getLogger(CamDaoImpl.class);
 	final JndiFactory jndi = JndiFactory.getInstance();
 
 	@Override
@@ -153,6 +158,7 @@ public class CamDaoImpl implements CamDao {
 		Connection connection = null;		
 		try {
 			connection = jndi.getConnection("jdbc/libraryDB");			
+			jlog.info("DB Verbindung zu 'jdbc/libraryDB' erfolgreich aufgebaut");
 			
 				PreparedStatement pstmt = connection.prepareStatement("select name, rolle from users where name = ? and passwort = ?");				
 				pstmt.setString(1, user);
@@ -273,5 +279,18 @@ public class CamDaoImpl implements CamDao {
 		} finally {	
 			closeConnection(connection);
 		}
+	}
+
+	@Override
+	public boolean isSessionOK(HttpServletRequest request) {
+		String keyWord = null;
+		
+		if(request.getSession(false) != null){
+			keyWord = (String) request.getSession(false).getAttribute("rolle");
+			if(keyWord == null){
+				return false;
+			}
+		}	
+		return true;
 	}
 }

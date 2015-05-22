@@ -2,6 +2,8 @@ package dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import model.Cam;
 import model.User;
 
@@ -19,5 +21,6 @@ public interface CamDao {
 	public List<User> userList();
 	
 	public User login(String user, String pass);
+	public boolean isSessionOK(HttpServletRequest request);
 }
 

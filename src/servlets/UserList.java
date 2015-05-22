@@ -22,9 +22,14 @@ public class UserList extends HttpServlet {
 	final CamDao camDao = DaoFactory.getInstance().getCamDao();
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		List<User> collection = camDao.userList();
-		request.setAttribute("users", collection);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/userList.jsp");
-		dispatcher.forward(request, response);		
+		if(!camDao.isSessionOK(request)){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			List<User> collection = camDao.userList();
+			request.setAttribute("users", collection);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/userList.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 }
