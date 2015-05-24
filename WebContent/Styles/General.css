@@ -1,0 +1,55 @@
+@CHARSET "ISO-8859-1";
+body {
+	margin: auto;
+	padding: 0px;
+	background-color: #fcf8d8;
+	color: #000000;
+}
+* {
+	font-family: Verdana,Arial,Sans-Serif;
+	font-size: 12px;
+}
+#top {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+}
+#navigation{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	left: 0px;
+}
+#content {
+	position: relative;
+}
+table.center{
+	margin-top: 20%;
+	margin-left:auto; 
+    margin-right:auto;
+}
+div#content input {
+	background-color: #408080;
+	color: #FFFFFF;
+}
+div#content table {
+	width: auto;
+	border-spacing: 0px;
+	padding-left: 20px;
+}
+div#content th {
+	background-color: #EEE;
+	font-weight: bold;
+	text-align: center;
+	border-top: 1px solid #0080ff;
+}
+div#content td {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+div#content th, div#content td {
+	padding-top: 2px;
+	padding-bottom: 2px;	
+	border-bottom: 1px solid #DCD2BA;
+}

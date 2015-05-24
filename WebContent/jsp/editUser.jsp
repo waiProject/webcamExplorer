@@ -1,21 +1,13 @@
-<%@ page import="model.*" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+	<%@include file="Top.jsp" %>
 <html>
   <head>    
-    <title>webcamExplorer - edit</title>
+    <%@include file="Head.jsp" %>
   </head>  
   <body>
-  <table border="0">
-  		<tr>
-  			<td><a href="camList">camList</a></td>
-  			<td><a href="userList">userList</a></td>
-  			<td><a href="logout">logout</a></td>   			
-  		</tr>
-  	</table>
+ 	<%@include file="Navigation.jsp" %>
+	
 	<form name="edit" action="editUser" method="post">		
-		<table border="1">
+		<table border="1" class="center">
 			<tbody>
 				<tr>
 					<td>Benutzer:</td>

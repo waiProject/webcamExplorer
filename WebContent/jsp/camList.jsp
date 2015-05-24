@@ -1,24 +1,12 @@
-<%@ page language="java" contentType="text/html" %>
-<%@ page import="model.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+	<%@include file="Top.jsp" %>
 <html>
   <head>
-  	<link rel="stylesheet" href="table.css" type="text/css">      
-    <title>webcamExplorer - Available Cams</title>     
+  	<%@include file="Head.jsp" %>    
   </head>
   <body>
-  	<table border="0">
-  		<tr>
-  			<td><a href="camList">camList</a></td>
-  			<c:if test="${sessionScope.rolle.equals('adm')}">
-  				<td><a href="userList">userList</a></td>
-  			</c:if>
-  			<td><a href="logout">logout</a></td>  			
-  		</tr>
-  	</table>
-  	
-  	<table border="1" class="calendar_table">
+  	<%@include file="Navigation.jsp" %>
+  	  	
+  	<table border="1" class="center">
   		<tbody>
 	  		<tr>
 	  			<td>Id</td>	
@@ -43,16 +31,15 @@
 					</c:if>
 					<td><a href="editCam?action=show&id=${cam.id}">Anzeigen</a></td>
 				</tr>
-			</c:forEach>	
+			</c:forEach>
+			<tr>
+				<c:choose>
+   					<c:when test="${sessionScope.rolle.equals('adm')}">
+   						<td colspan="8"><a href="editCam?action=add">+ Neue Kamera hinzufügen</a></td>
+   					</c:when>
+				</c:choose>
+			</tr>	
   		</tbody>
-  	</table>
-  	
-  	<br>
-  	<c:choose>
-   		<c:when test="${sessionScope.rolle.equals('adm')}">
-   			<a href="editCam?action=add">+ Neue Kamera hinzufügen</a>
-   		</c:when>
-	</c:choose>
-  	
+  	</table>  	
   </body>
 </html>
