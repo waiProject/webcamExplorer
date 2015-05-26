@@ -21,8 +21,8 @@ public class SessionCheck implements Job{
 	public void execute(JobExecutionContext context)
 			throws JobExecutionException {
 		try {
-			SessionCheck core = new SessionCheck();
-			core.test();
+//			SessionCheck core = new SessionCheck();
+//			core.test();
 			this.test();
 		} catch (Exception e) {
 			e.printStackTrace();

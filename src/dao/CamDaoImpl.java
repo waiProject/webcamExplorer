@@ -290,7 +290,9 @@ public class CamDaoImpl implements CamDao {
 			if(keyWord == null){
 				return false;
 			}
-		}	
+		}else{
+			return false;
+		}
 		return true;
 	}
 }

@@ -19,7 +19,7 @@
 			<td><input type="text" name="benutzer" value=""></td>		
 			</tr><tr>
 			<td>Passwort:</td>
-			<td><input type="password" name="password" value=""></td>		
+			<td><input type="password" name="password" value="" size="10"></td>		
 			</tr><tr>		
 			<td colspan="2"><input type="submit" name="btnLogin" value="Login"></td>
 			</tr>

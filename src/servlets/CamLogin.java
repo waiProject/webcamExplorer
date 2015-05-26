@@ -48,7 +48,12 @@ public class CamLogin extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
+		HttpSession session = request.getSession(false);
+		if(session != null){
+			session.invalidate();
+		}
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 		dispatcher.forward(request, response);
 	}
