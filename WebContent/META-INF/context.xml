@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE webcamExplorer>
 <Context>
     <Environment name="webcamExplorer" value="true" type="java.lang.Boolean" override="false"/>
     <Environment name="projectPath" value="C:/Users/Mkay/git/webcamExplorer/WebContent" type="java.lang.String" override="false"/>

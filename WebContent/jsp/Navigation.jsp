@@ -1,11 +1,11 @@
 <div id="navigation">
-<table border="0">
+<table border="0" cellspacing="15">
   		<tr>
-  			<td><a href="camList">camList</a></td>
+  			<th><a href="camList">camList</a></th>
   			<c:if test="${sessionScope.rolle.equals('adm')}">
-  				<td><a href="userList">userList</a></td>
+  				<th><a href="userList">userList</a></th>
   			</c:if>
-  			<td><a href="logout">logout</a></td>  			
+  			<th><a href="logout">${benutzer} logout</a></th>  			
   		</tr>
   	</table>
 </div>
