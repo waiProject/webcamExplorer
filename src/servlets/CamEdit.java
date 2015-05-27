@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import security.SessionHandling;
 import dao.CamDao;
 import dao.DaoFactory;
 import exception.CamNotDeletedException;
@@ -38,7 +39,7 @@ public class CamEdit extends HttpServlet {
 		/**
 		 * Überprüfe auf korrektheit der Session
 		 */
-		if(!camDao.isSessionOK(request)){
+		if(!SessionHandling.isSessionOK(request)){
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}else if (action == null) {
@@ -69,15 +70,14 @@ public class CamEdit extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 		}
-		else if(action.equals("show")) {			
-			try {
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/showImage.jsp");
-				dispatcher.forward(request, response);
-			} catch (CamNotDeletedException e) {
-				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
-				dispatcher.forward(request, response);
-			}
-		}
+//		else if(action.equals("show")) {			
+//			try {
+//				response.sendRedirect(request.getContextPath() + "/imageList");
+//			} catch (CamNotDeletedException e) {
+//				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
+//				dispatcher.forward(request, response);
+//			}
+//		}
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		

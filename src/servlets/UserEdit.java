@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import security.JavaMD5Hash;
+import security.SessionHandling;
 import dao.CamDao;
 import dao.DaoFactory;
 import exception.CamNotDeletedException;
@@ -36,7 +37,7 @@ public class UserEdit extends HttpServlet {
 			id = Long.valueOf(request.getParameter("id"));
 		}
 		
-		if(!camDao.isSessionOK(request)){
+		if(!SessionHandling.isSessionOK(request)){
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}else if (action == null) {

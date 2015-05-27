@@ -13,24 +13,27 @@
 	  			<td>Kamera Name</td>
 	  			<td>Ort</td>				
 				<td>URL</td>
-				<td>Rolle</td>
 				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<c:if test="${sessionScope.rolle.equals('adm')}">
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</c:if>
 			</tr>			
 			<c:forEach var="cam" items="${cams}">
-				<tr>
-					<td><c:out value="${cam.id}"/></td>					
-					<td><c:out value="${cam.name}"/></td>
-					<td><c:out value="${cam.ort}"/></td>
-					<td><c:out value="${cam.url}"/></td>
-					<td><c:out value="${cam.rolle}"/></td>
-					<c:if test="${sessionScope.rolle.equals('adm')}">
-						<td><a href="editCam?action=edit&id=${cam.id}">Ändern</a></td>
-						<td><a href="editCam?action=delete&id=${cam.id}">Löschen</a></td>
-					</c:if>
-					<td><a href="editCam?action=show&id=${cam.id}">Anzeigen</a></td>
-				</tr>
+				<c:if test="${sessionScope.rolle.equals(cam.rolle)
+						|| (sessionScope.rolle.equals('adm') && cam.rolle.equals('usr'))}">
+					<tr>
+						<td><c:out value="${cam.id}"/></td>					
+						<td><c:out value="${cam.name}"/></td>
+						<td><c:out value="${cam.ort}"/></td>
+						<td><c:out value="${cam.url}"/></td>
+						<c:if test="${sessionScope.rolle.equals('adm')}">
+							<td><a href="editCam?action=edit&id=${cam.id}">Ändern</a></td>
+							<td><a href="editCam?action=delete&id=${cam.id}">Löschen</a></td>
+						</c:if>
+						<td><a href="imageList?id=${cam.id}&cam_name=${cam.name}&cam_ort=${cam.ort}">Anzeigen</a></td>
+					</tr>
+				</c:if>
 			</c:forEach>
 			<tr>
 				<c:choose>

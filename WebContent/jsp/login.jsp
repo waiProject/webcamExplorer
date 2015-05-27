@@ -3,11 +3,11 @@
 <html>
 <head>
 	<%@include file="Head.jsp" %>
+	<script src="/webcamExplorer/scripts/emptyCheck.js" type="text/javascript"></script> 
 </head>
 <body>
 
-
-<form name="login" action="login" method="post">
+<form name="login" action="login" method="post" onsubmit="return required();">
 	<div id="content">
 	<table class="center">
 		<tbody>

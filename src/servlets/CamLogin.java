@@ -41,7 +41,7 @@ public class CamLogin extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("rolle", benutzer.getRolle());
 			session.setAttribute("benutzer", benutzer.getName());
-			session.setMaxInactiveInterval(60);
+			session.setMaxInactiveInterval(600);
 			
 			response.sendRedirect(request.getContextPath() + "/camList");
 		}		

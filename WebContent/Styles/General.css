@@ -9,12 +9,6 @@ body {
 	font-family: Verdana,Arial,Sans-Serif;
 	font-size: 12px;
 }
-#top {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	left: 0px;
-}
 #navigation{
 	position: absolute;
 	top: 0px;
@@ -23,6 +17,21 @@ body {
 }
 #content {
 	position: relative;
+}
+table.error{
+	line-height: 30px;
+	text-align:center;
+	margin-top: 20%;
+	margin-left:auto; 
+    margin-right:auto;
+}
+table.error th{
+	font-size: 18px;
+}
+table.images{
+	text-align: center;
+	margin-left:auto; 
+    margin-right:auto;
 }
 table.center{
 	margin-top: 20%;

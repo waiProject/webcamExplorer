@@ -21,16 +21,16 @@
 	
 	 <schedule>
 		<job>
-			<name>Session-Job</name>
+			<name>Get-Images-Job</name>
 			<group>GROUP-1</group>
-			<job-class>application.SessionCheck</job-class>
+			<job-class>quartz.jobs.classes.GetWebcamImages</job-class>
 		</job>
 	
 		<trigger>
 			<cron>
 				<name>Session</name>
 				<group>MYTRIGGER_GROUP</group>
-				<job-name>Session-Job</job-name>
+				<job-name>Get-Images-Job</job-name>
 				<job-group>GROUP-1</job-group>
 				<cron-expression>0 0/1 * * * ?</cron-expression>
 			</cron>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import security.SessionHandling;
 import model.Cam;
 import dao.CamDao;
 import dao.DaoFactory;
@@ -25,11 +26,11 @@ public class CamList extends HttpServlet {
 		if(request.isRequestedSessionIdValid()){
 			System.out.println("BLABLUB SESSION is valid:"+request.getSession(false).getId());
 		}
-		if(!camDao.isSessionOK(request)){
+		if(!SessionHandling.isSessionOK(request)){
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}else{
-			List<Cam> collection = camDao.list();
+			List<Cam> collection = camDao.camList();
 			request.setAttribute("cams", collection);
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/camList.jsp");
