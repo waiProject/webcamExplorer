@@ -31,7 +31,7 @@
 							<td><a href="editCam?action=edit&id=${cam.id}">Ändern</a></td>
 							<td><a href="editCam?action=delete&id=${cam.id}">Löschen</a></td>
 						</c:if>
-						<td><a href="imageList?id=${cam.id}&cam_name=${cam.name}&cam_ort=${cam.ort}">Anzeigen</a></td>
+						<td><a href="search?id=${cam.id}">Anzeigen</a></td>
 					</tr>
 				</c:if>
 			</c:forEach>
@@ -46,3 +46,5 @@
   	</table>  	
   </body>
 </html>
+
+<!-- imageList?id=${cam.id}&cam_name=${cam.name}&cam_ort=${cam.ort} -->

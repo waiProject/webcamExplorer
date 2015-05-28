@@ -17,7 +17,6 @@ public interface CamDao {
 	
 	public Cam getCam(Long id);
 	public User getUser(Long id);
-	public Image getImage(Long id);
 	
 	public List<Cam> camList();
 	public List<User> userList();

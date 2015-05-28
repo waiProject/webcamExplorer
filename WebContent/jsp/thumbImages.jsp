@@ -14,20 +14,24 @@
 			</tr>
 			<c:forEach var="img" items="${images}" varStatus="status" step="5">
 				<tr>							
-					<c:forEach var="i" begin="1" end="5" step="1">
-						<c:if test="${status.index+1+i != fn:length(images)}">
+					<c:forEach var="i" begin="0" end="4" step="1">
+						<c:if test="${status.index+i lt fn:length(images)}">
 							<td>
 								<figure>
-			                       <img src="thumbnail?path=${images[status.index+i].localPathThumb}" alt="${images[status.index+i].localPathThumb}" width=105 height=80>
+			                       <a href="showImage?action=showPicture&localpath=${images[status.index+i].localPath}">
+			                       		<img src="thumbnail?path=${images[status.index+i].localPathThumb}" alt="${images[status.index+i].localPathThumb}">
+			                       </a>
 			                    </figure>
 							</td>
 						</c:if>
 					</c:forEach>
 	 				<tr>
 						<c:forEach var="i" begin="0" end="4" step="1">
-							<c:if test="${status.index+1+i != fn:length(images)}">
-								<td>
-									<c:out value="${images[status.index+i].uhrzeit}"></c:out>
+							<c:if test="${status.index+i lt fn:length(images)}">
+								<td>									
+									<a href="showImage?action=showPicture&localpath=${images[status.index+i].localPath}">
+										<c:out value="${images[status.index+i].uhrzeit}"></c:out>
+									</a>
 								</td>
 							</c:if>
 						</c:forEach>

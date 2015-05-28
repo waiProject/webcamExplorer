@@ -1,28 +1,30 @@
 	<%@include file="Top.jsp" %>
 <html>
-  <head>    
+  <head>
+  	<script type="text/javascript">
+  	<!--
+  		
+  	-->
+  	</script>   
     <%@include file="Head.jsp" %>
   </head>  
   <body>
-	<form name="edit" action="edit" method="post">		
-		<table border="1">
+  	<%@include file="Navigation.jsp" %>
+			
+		<table border="1" class="images">
 			<tbody>
 				<tr>
+				 <td>
 					<figure>
-                       <img src="z:\Desktop\w_mvc_3\w_mvc_3\w_mvc_3\bilder\MA-Wasserturm.jpg" alt="${cam.url}" width=240 height=260>
+                      <img src="thumbnail?path=${localpath}" alt="${localpath}">
                     </figure>
-                    
-                    
-					<figure>
-                       <img src="${cam.url}" alt="${cam.url}" width=240 height=260>
-                    </figure>	
-				</tr>	
-			
+                    </td>
+				</tr>			
 				<tr>	
-					<td colspan="2"><input type="submit" name="btnSave" value="Zurück"></td>
+					<td><a href="javascript:history.go(-1);" >zurück</a></td>
 				</tr>				
 			</tbody>
 		</table>
-	</form>
+	
   </body>
 </html>

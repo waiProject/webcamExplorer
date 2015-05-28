@@ -171,36 +171,6 @@ public class CamDaoImpl implements CamDao {
 	}
 
 	@Override
-	public Image getImage(Long id) {
-		if (id == null)
-			throw new IllegalArgumentException("id can not be null");
-		
-		Connection connection = null;		
-		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
-			PreparedStatement pstmt = connection.prepareStatement("select img_id, cam_id, filepath, filepath_thumb, datetime, from images where img_id = ?");
-			pstmt.setLong(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				Image img = new Image();
-				img.setImg_id(rs.getLong("img_id"));
-				img.setCamId(rs.getLong("cam_id"));
-				img.setlocalPath(rs.getString("filepath"));
-				img.setlocalPathThumb(rs.getString("filepath_thumb"));
-				img.setDatetime(rs.getTimestamp("datetime"));
-				return img;
-			} else {
-				throw new ImageNotFoundException(id);
-			}			
-		} catch (Exception e) {
-			throw new ImageNotFoundException(id);
-		} finally {	
-			closeConnection(connection);
-		}
-	}
-
-	@Override
 	public void saveCam(Cam cam) {
 		
 		if (cam == null)
