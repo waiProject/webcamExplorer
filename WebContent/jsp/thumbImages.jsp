@@ -25,6 +25,7 @@
 							</td>
 						</c:if>
 					</c:forEach>
+				</tr>
 	 				<tr>
 						<c:forEach var="i" begin="0" end="4" step="1">
 							<c:if test="${status.index+i lt fn:length(images)}">
@@ -36,7 +37,6 @@
 							</c:if>
 						</c:forEach>
 					</tr>
-				</tr>
 			</c:forEach>		
   		</tbody>
   	</table>

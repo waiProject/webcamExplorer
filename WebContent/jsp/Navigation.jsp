@@ -1,5 +1,6 @@
 <div id="navigation">
 <table border="0" cellspacing="15">
+	<tbody>
   		<tr>
   			<th><a href="camList">camList</a></th>
   			<c:if test="${sessionScope.rolle.equals('adm')}">
@@ -7,5 +8,6 @@
   			</c:if>
   			<th><a href="logout">${benutzer} logout</a></th>  			
   		</tr>
-  	</table>
+  	</tbody>
+</table>
 </div>
