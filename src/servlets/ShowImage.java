@@ -22,25 +22,12 @@ import org.apache.log4j.Logger;
 public class ShowImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger jlog = Logger.getLogger(ShowImage.class);
-       
+     
+	/**
+	 * Get wird aus der thumbImages.jsp aufgerufen und zeigt nur das ausgewählte Bild in vollgröße an 
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String localpath = request.getParameter("localpath");
-//		String action = request.getParameter("action");
-		
-//		if(action.equals("thumbnailView")){
-//			String datum = request.getParameter("datum");
-//			List<Image> imageList = (List<Image>) request.getSession(false).getAttribute("imageList");
-//			List<Image> imageListDate = new LinkedList<Image>();
-//			
-//			for(Image img : imageList){
-//				if(img.getDatum().equals(datum)){
-//					imageListDate.add(img);
-//				}
-//			}
-//			request.setAttribute("images", imageListDate);
-//			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/thumbImages.jsp");
-//			dispatcher.forward(request, response);
-//		}else if(action.equals("showPicture")){
 			if(localpath != null){
 				request.setAttribute("localpath", localpath);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/showImage.jsp");
@@ -51,9 +38,11 @@ public class ShowImage extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
 				dispatcher.forward(request, response);
 			}
-//		}	
 	}
 	
+	/**
+	 * Post wird von search.jsp durch ein Formular mit der Datumsauswahl aufgerufen
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,6 +55,7 @@ public class ShowImage extends HttpServlet {
 				imageListDate.add(img);
 			}
 		}
+		
 		request.setAttribute("images", imageListDate);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/thumbImages.jsp");
 		dispatcher.forward(request, response);

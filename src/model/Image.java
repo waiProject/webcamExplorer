@@ -51,7 +51,7 @@ public class Image {
 
 	public void setDatetime(Timestamp datetime) {
 		this.datetime = datetime;
-		SimpleDateFormat date = new SimpleDateFormat("dd MM yyyy");
+		SimpleDateFormat date = new SimpleDateFormat("dd.MM.yyyy");
 		SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
 		this.datum = date.format(datetime);
 		this.uhrzeit = time.format(datetime);

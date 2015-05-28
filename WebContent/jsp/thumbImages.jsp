@@ -10,7 +10,7 @@
 	<table border="1" class="images">
   		<tbody>
 	  		<tr>
-	  			<th colspan="5"><c:out value="${cam_name} - ${cam_ort}"></c:out></th>
+	  			<th colspan="5"><c:out value="${sessionScope.cam_name} - ${sessionScope.cam_ort}"></c:out></th>
 			</tr>
 			<c:forEach var="img" items="${images}" varStatus="status" step="5">
 				<tr>							
@@ -18,8 +18,8 @@
 						<c:if test="${status.index+i lt fn:length(images)}">
 							<td>
 								<figure>
-			                       <a href="showImage?action=showPicture&localpath=${images[status.index+i].localPath}">
-			                       		<img src="thumbnail?path=${images[status.index+i].localPathThumb}" alt="${images[status.index+i].localPathThumb}">
+			                       <a href="showImage?localpath=${images[status.index+i].localPath}">
+			                       		<img src="getImage?path=${images[status.index+i].localPathThumb}" alt="${images[status.index+i].localPathThumb}">
 			                       </a>
 			                    </figure>
 							</td>
@@ -29,7 +29,7 @@
 						<c:forEach var="i" begin="0" end="4" step="1">
 							<c:if test="${status.index+i lt fn:length(images)}">
 								<td>									
-									<a href="showImage?action=showPicture&localpath=${images[status.index+i].localPath}">
+									<a href="showImage?localpath=${images[status.index+i].localPath}">
 										<c:out value="${images[status.index+i].uhrzeit}"></c:out>
 									</a>
 								</td>

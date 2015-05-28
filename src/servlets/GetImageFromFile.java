@@ -16,10 +16,10 @@ import org.apache.log4j.Logger;
 /**
  * Servlet implementation class ThumbnailView
  */
-@WebServlet("/thumbnail")
-public class ThumbnailView extends HttpServlet {
+@WebServlet("/getImage")
+public class GetImageFromFile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger jlog = Logger.getLogger(ThumbnailView.class);
+	private static Logger jlog = Logger.getLogger(GetImageFromFile.class);
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);

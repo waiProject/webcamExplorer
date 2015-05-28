@@ -16,7 +16,7 @@
 				<tr>
 				 <td>
 					<figure>
-                      <img src="thumbnail?path=${localpath}" alt="${localpath}">
+                      <img src="getImage?path=${localpath}" alt="${localpath}">
                     </figure>
                     </td>
 				</tr>			

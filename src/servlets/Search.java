@@ -25,13 +25,17 @@ public class Search extends HttpServlet {
 	final CamDao camDao = DaoFactory.getInstance().getCamDao();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Long id = null;
+		Long cam_id = null;
+		String cam_name = null;
+		String cam_ort = null;
 		
-		if (request.getParameter("id") != null) {
-			id = Long.valueOf(request.getParameter("id"));
+		if (request.getParameter("cam_id") != null) {
+			cam_id = Long.valueOf(request.getParameter("cam_id"));
+			cam_name = request.getParameter("cam_name");
+			cam_ort = request.getParameter("cam_ort");
 		}
 		
-		List<Image> imageList = camDao.imageList(id);
+		List<Image> imageList = camDao.imageList(cam_id);
 		List<String> dateList = new LinkedList<String>();
 		
 		for(Image img : imageList)
@@ -41,7 +45,10 @@ public class Search extends HttpServlet {
 		}
 		HttpSession session = request.getSession(false);
 		session.setAttribute("imageList", imageList);
-		request.setAttribute("cam_id", id);
+		session.setAttribute("cam_id", cam_id);
+		session.setAttribute("cam_name", cam_name);
+		session.setAttribute("cam_ort", cam_ort);
+		
 		request.setAttribute("dates", dateList);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/search.jsp");
 		dispatcher.forward(request, response);

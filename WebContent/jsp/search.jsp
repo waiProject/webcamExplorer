@@ -9,23 +9,25 @@
   	<form name="showImage" action="showImage" method="post">
   	<table border="1" class="center">
   		<tbody>
+  			<tr>
+  				<th colspan="2"><c:out value="${sessionScope.cam_name} - ${sessionScope.cam_ort}"></c:out></th>
+  			</tr>
 	  		<tr>	  			
 	  			<td>Datum</td>				
 				<td>&nbsp;</td>				
 			</tr>		
-				<tr>				
-					<td>
+			<tr>				
+				<td>
 					<select name="datumauswahl">					    
 					    <c:forEach var="date" items="${dates}">
 						    <option>${date}</option>
 						</c:forEach>
 					 </select>
-					</td>
-					<td>
+				</td>
+				<td>
 					<input type="submit" name="btnSave" value="Datum Anzeigen">
-					<!-- <a href="showImage?action=thumbnailView&datum=${date}">Datum Anzeigen</a> -->
-					</td>
-				</tr>
+				</td>
+			</tr>
   		</tbody>
   	</table>
   	</form> 

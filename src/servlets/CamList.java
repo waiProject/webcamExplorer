@@ -23,9 +23,6 @@ public class CamList extends HttpServlet {
 	final CamDao camDao = DaoFactory.getInstance().getCamDao();
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
-		if(request.isRequestedSessionIdValid()){
-			System.out.println("BLABLUB SESSION is valid:"+request.getSession(false).getId());
-		}
 		if(!SessionHandling.isSessionOK(request)){
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
 			dispatcher.forward(request, response);
