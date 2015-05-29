@@ -15,6 +15,8 @@ import model.Image;
 
 import org.apache.log4j.Logger;
 
+import security.SessionHandling;
+
 /**
  * Servlet implementation class ThumbnailView
  */
@@ -28,6 +30,10 @@ public class ShowImage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String localpath = request.getParameter("localpath");
+		if(!SessionHandling.isSessionOK(request)){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else{
 			if(localpath != null){
 				request.setAttribute("localpath", localpath);
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/showImage.jsp");
@@ -38,6 +44,7 @@ public class ShowImage extends HttpServlet {
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/error.jsp");
 				dispatcher.forward(request, response);
 			}
+		}		
 	}
 	
 	/**

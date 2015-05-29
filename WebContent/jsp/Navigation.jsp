@@ -1,5 +1,5 @@
 <div id="navigation">
-<table border="0" cellspacing="15">
+<table>
 	<tbody>
   		<tr>
   			<th><a href="camList">camList</a></th>

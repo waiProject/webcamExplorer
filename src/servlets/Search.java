@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import security.SessionHandling;
 import model.Image;
 import dao.CamDao;
 import dao.DaoFactory;
@@ -35,23 +36,29 @@ public class Search extends HttpServlet {
 			cam_ort = request.getParameter("cam_ort");
 		}
 		
-		List<Image> imageList = camDao.imageList(cam_id);
-		List<String> dateList = new LinkedList<String>();
-		
-		for(Image img : imageList)
-		{
-			if(!dateList.contains(img.getDatum()))
-				dateList.add(img.getDatum());
+		if(!SessionHandling.isSessionOK(request)){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			List<Image> imageList = camDao.imageList(cam_id);
+			List<String> dateList = new LinkedList<String>();
+			
+			for(Image img : imageList)
+			{
+				if(!dateList.contains(img.getDatum()))
+					dateList.add(img.getDatum());
+			}
+			HttpSession session = request.getSession(false);
+			session.setAttribute("imageList", imageList);
+			session.setAttribute("cam_id", cam_id);
+			session.setAttribute("cam_name", cam_name);
+			session.setAttribute("cam_ort", cam_ort);
+			
+			request.setAttribute("dates", dateList);
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/search.jsp");
+			dispatcher.forward(request, response);
 		}
-		HttpSession session = request.getSession(false);
-		session.setAttribute("imageList", imageList);
-		session.setAttribute("cam_id", cam_id);
-		session.setAttribute("cam_name", cam_name);
-		session.setAttribute("cam_ort", cam_ort);
 		
-		request.setAttribute("dates", dateList);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/search.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }

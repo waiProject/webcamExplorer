@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+
+import security.SessionHandling;
 
 /**
  * Servlet implementation class ThumbnailView
@@ -22,12 +25,22 @@ public class GetImageFromFile extends HttpServlet {
 	private static Logger jlog = Logger.getLogger(GetImageFromFile.class);
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		if(!SessionHandling.isSessionOK(request)){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else{		
+			doPost(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("image/jpg");
-		this.getThumbnail(request.getParameter("path"), response.getOutputStream());	
+		if(!SessionHandling.isSessionOK(request)){
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			response.setContentType("image/jpg");
+			this.getThumbnail(request.getParameter("path"), response.getOutputStream());
+		}
 	}
 	
 	/**
