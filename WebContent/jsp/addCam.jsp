@@ -19,8 +19,13 @@
 					<td>Url:</td>	
 					<td><input type="text" name="url" value=""></td>
 					</tr><tr>
-					<td>Rolle (usr, adm):</td>
-					<td><input type="text" name="rolle" value=""></td>		
+					<td>Rolle:</td>
+					<td>
+					<select name="rolle">
+					    <option>usr</option>
+					    <option>adm</option>
+					</select>
+					</td>
 					</tr><tr>	
 					<td colspan="2"><input type="submit" name="btnSave" value="Save"></td>
 				</tr>

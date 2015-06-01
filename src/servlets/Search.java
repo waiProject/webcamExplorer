@@ -19,6 +19,7 @@ import dao.DaoFactory;
 
 /**
  * Servlet implementation class Search
+ * Filtert alle vorhandenen Bilder einer bestimmten Kamera anhand des Datums und listet diese in search.jsp auf
  */
 @WebServlet("/search")
 public class Search extends HttpServlet {

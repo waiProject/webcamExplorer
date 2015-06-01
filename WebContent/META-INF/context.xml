@@ -2,6 +2,7 @@
 <!DOCTYPE webcamExplorer>
 <Context basedir=".">
     <Environment name="webcamExplorer" value="true" type="java.lang.Boolean" override="false"/>
+    <Environment name="imagesPath" value="C:/webcamExplorer_Images" type="java.lang.String" override="false"/>
     <Environment name="projectPath" value="C:/Users/Mkay/git/webcamExplorer/WebContent" type="java.lang.String" override="false"/>
     <Environment name="configPath" value="/config" type="java.lang.String" override="false"/>
 	<Resource name="jdbc/libraryDB"

@@ -18,10 +18,10 @@
 					</tr><tr>
 					<td>Rolle:</td>
 					<td>
-					 <select name="rolle" size="2">
+					<select name="rolle">
 					    <option>usr</option>
 					    <option>adm</option>
-					  </select>
+					</select>
 					</td>
 					</tr><tr>	
 					<td colspan="2"><input type="submit" name="btnSave" value="Save"></td>
