@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import jndi.JndiFactory;
+import utils.JNDIFactory;
 import model.Cam;
 import model.Image;
 import model.User;
@@ -26,7 +26,8 @@ import exception.UserNotSavedException;
 public class CamDaoImpl implements CamDao {
 	
 	private static Logger jlog = Logger.getLogger(CamDaoImpl.class);
-	final JndiFactory jndi = JndiFactory.getInstance();
+	final JNDIFactory jndi = JNDIFactory.getInstance();
+	private final String dbConnection = "jdbc/libraryDB";
 
 	@Override
 	public List<Cam> camList() {
@@ -35,7 +36,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			
 				PreparedStatement pstmt = connection.prepareStatement("select id, name, ort, url, rolle from cameras");				
 				ResultSet rs = pstmt.executeQuery();
@@ -63,7 +64,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			
 				PreparedStatement pstmt = connection.prepareStatement("select user_id, name, rolle from users");				
 				ResultSet rs = pstmt.executeQuery();
@@ -90,7 +91,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			
 				PreparedStatement pstmt = connection.prepareStatement("select * from images where cam_id = ?");
 				pstmt.setLong(1, id);				
@@ -121,7 +122,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			PreparedStatement pstmt = connection.prepareStatement("select id, name, ort, url, rolle from cameras where id = ?");
 			pstmt.setLong(1, id);
 			ResultSet rs = pstmt.executeQuery();							
@@ -150,7 +151,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			PreparedStatement pstmt = connection.prepareStatement("select user_id, name, rolle from users where user_id = ?");
 			pstmt.setLong(1, id);
 			ResultSet rs = pstmt.executeQuery();							
@@ -178,7 +179,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			if (cam.getId() == null) {
 				PreparedStatement pstmt = connection.prepareStatement("insert into cameras (name, ort, url, rolle) values (?,?,?,?)");
 				pstmt.setString(1, cam.getName());
@@ -210,7 +211,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			if (user.getId() == null) {
 				PreparedStatement pstmt = connection.prepareStatement("insert into users (name, passwort, rolle) values (?,?,?)");
 				pstmt.setString(1, user.getName());
@@ -240,7 +241,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			
 				PreparedStatement pstmt = connection.prepareStatement("insert into images (cam_id, filepath, filepath_thumb) values (?,?,?)");
 				pstmt.setLong(1, image.getCamId());
@@ -263,7 +264,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");		
+			connection = jndi.getConnection(this.dbConnection);		
 			PreparedStatement pstmt = connection.prepareStatement("delete from cameras where id = ?");
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();			
@@ -281,7 +282,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");		
+			connection = jndi.getConnection(this.dbConnection);		
 			PreparedStatement pstmt = connection.prepareStatement("delete from users where user_id = ?");
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();			
@@ -299,7 +300,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");		
+			connection = jndi.getConnection(this.dbConnection);		
 			PreparedStatement pstmt = connection.prepareStatement("delete from images where img_id = ?");
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();	
@@ -317,7 +318,7 @@ public class CamDaoImpl implements CamDao {
 		
 		Connection connection = null;		
 		try {
-			connection = jndi.getConnection("jdbc/libraryDB");			
+			connection = jndi.getConnection(this.dbConnection);			
 			jlog.info("DB Verbindung zu 'jdbc/libraryDB' erfolgreich aufgebaut in Method: "+ CamDaoImpl.class.getSimpleName());
 			
 				PreparedStatement pstmt = connection.prepareStatement("select name, rolle from users where name = ? and passwort = ?");				
